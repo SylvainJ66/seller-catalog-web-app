@@ -7,6 +7,13 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/react",
+    "plugin:security/recommended",
+    "plugin:xss/recommended",
+    "prettier",
+
   ],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
@@ -15,8 +22,8 @@ module.exports = {
       files: ["*.js", "*.jsx"]
     }
   ],
-  ignorePatterns: ["dist/*"],
-  plugins: ['react-refresh'],
+  ignorePatterns: ["dist", "storybook-static", "coverage"],
+  plugins: ['react-refresh', "simple-import-sort"],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
