@@ -1,6 +1,12 @@
 import "./header.css";
 import { useDarkLightMode } from "@/hooks";
 import clsx from "clsx";
+import styled from "@emotion/styled";
+
+const NavLink = styled.a`
+  text-decoration: none;
+  color: ${({ light }) => (light ? "black" : "white")};
+`;
 
 export default function Header() {
   const [currentMode, { toggleMode }] = useDarkLightMode();
@@ -12,20 +18,14 @@ export default function Header() {
         <nav>
           <ol className="navList">
             <li className="navListItem">
-              <a
-                href="/page1"
-                className={clsx("navLink", { light: currentMode })}
-              >
+              <NavLink href="/page1" light={currentMode}>
                 Page 1
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="/page2"
-                className={clsx("navLink", { light: currentMode })}
-              >
+              <NavLink href="/page2" light={currentMode}>
                 Page 2
-              </a>
+              </NavLink>
             </li>
           </ol>
         </nav>
