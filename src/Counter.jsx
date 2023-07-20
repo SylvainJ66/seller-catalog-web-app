@@ -1,17 +1,18 @@
 import { number } from "prop-types";
 import useCounter from "./hooks/useCounter.js";
 
-export default function Counter({ initValue = 0 }) {
-  const [counter, { increment, decrement }] = useCounter(initValue);
+export default function Counter({ initValue = 0, step = 1 }) {
+  const [counter, { increment, decrement }] = useCounter(initValue, step);
   return (
     <>
       <h4>{counter}</h4>
-      <button onClick={increment}>+1</button>
-      <button onClick={decrement}>-1</button>
+      <button onClick={increment}>+{step}</button>
+      <button onClick={decrement}>-{step}</button>
     </>
   );
 }
 
 Counter.propTypes = {
   initValue: number,
+  step: number,
 };

@@ -5,7 +5,7 @@ export default function App() {
     <>
       <Counter />
       <Counter initValue={100} />
-      <Counter initValue={8} />
+      <Counter initValue={8} step={10} />
     </>
   );
 }
