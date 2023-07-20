@@ -1,6 +1,9 @@
 import "./header.css";
+import { useDarkLightMode } from "@/hooks";
 
 export default function Header() {
+  const [currentMode, { toggleMode }] = useDarkLightMode();
+
   return (
     <>
       <header>
@@ -19,7 +22,7 @@ export default function Header() {
             </li>
           </ol>
         </nav>
-        <button onClick={() => {}}>Night / Day</button>
+        <button onClick={toggleMode}>Mode {currentMode}</button>
       </header>
     </>
   );
