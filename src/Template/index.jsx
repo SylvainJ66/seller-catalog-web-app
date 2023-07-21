@@ -1,5 +1,4 @@
-import Header from "@/Header/index.js";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import {
   AppBar,
   Avatar,
@@ -21,6 +20,8 @@ const mainMenu = [
 ];
 
 export default function Template() {
+  const { pathname } = useLocation();
+
   return (
     <>
       <AppBar position="static">
@@ -30,13 +31,10 @@ export default function Template() {
               variant="h6"
               noWrap
               component={Link}
-              href="/"
+              to="/"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
               }}
@@ -44,13 +42,14 @@ export default function Template() {
               Seller Catalog
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Box sx={{ flexGrow: 1, display: "flex" }}>
               {mainMenu.map(({ name, url }) => (
                 <Button
                   key={url}
                   component={Link}
                   to={url}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  variant="navigation"
+                  color={pathname === url ? "active" : undefined}
                 >
                   {name}
                 </Button>
@@ -67,7 +66,6 @@ export default function Template() {
           </Toolbar>
         </Container>
       </AppBar>
-      <Header />
       <Outlet />
     </>
   );
