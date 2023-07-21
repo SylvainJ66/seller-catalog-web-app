@@ -15,15 +15,13 @@ module.exports = {
     "prettier",
   ],
   parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-  settings: { 
-    react: { 
-      version: "18.2" 
+  settings: {
+    react: {
+      version: "18.2",
     },
-    'import/resolver': {
+    "import/resolver": {
       alias: {
-        map: [
-          ['@', './src'],
-        ],
+        map: [["@", "./src"]],
       },
     },
   },
