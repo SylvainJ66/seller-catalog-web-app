@@ -2,14 +2,15 @@ import "./header.css";
 import { useDarkLightMode } from "@/hooks";
 import clsx from "clsx";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   text-decoration: none;
   color: ${({ light }) => (light ? "black" : "white")};
 `;
 
 const mainMenu = [
-  { name: "Produits", url: "/products" },
+  { name: "Produits", url: "/" },
   { name: "Commandes", url: "/orders" },
   { name: "Finance", url: "/financial" },
   { name: "Messages", url: "/messages" },
@@ -27,7 +28,7 @@ export default function Header() {
           <ol className="navList">
             {mainMenu.map(({ name, url }) => (
               <li key={name} className="navListItem">
-                <NavLink href={url} light={currentMode}>
+                <NavLink to={url} light={currentMode}>
                   {name}
                 </NavLink>
               </li>
