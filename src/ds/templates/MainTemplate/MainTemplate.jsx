@@ -19,7 +19,7 @@ const mainMenu = [
   { name: "Marketplaces", url: "/marketPlaces" },
 ];
 
-export default function Template() {
+export default function MainTemplate() {
   const { pathname } = useLocation();
 
   return (
