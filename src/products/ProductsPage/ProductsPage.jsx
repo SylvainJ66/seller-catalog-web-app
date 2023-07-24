@@ -4,24 +4,29 @@ import db from "../../db.json";
 import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
 import ProductCondition from "@/products/ProductCondition/index.js";
+import { withRow } from "@/hoc/index.js";
 
 const columns = [
   {
     field: "imageUrl",
     headerName: "Image",
-    renderCell: ProductImage,
+    renderCell: withRow(ProductImage),
   },
   {
     field: "productDescription",
     headerName: "Produit",
     valueGetter: ({ row }) => `${row.name} ${row.description}`,
   },
-  { field: "condition", headerName: "Condition", renderCell: ProductCondition },
+  {
+    field: "condition",
+    headerName: "Condition",
+    renderCell: withRow(ProductCondition),
+  },
   {
     field: "price",
     headerName: "Prix",
     type: "number",
-    renderCell: ProductPrice,
+    renderCell: withRow(ProductPrice),
   },
   { field: "stock", headerName: "Stock", typeNumber: true },
 ];
