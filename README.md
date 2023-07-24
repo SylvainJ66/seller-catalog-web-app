@@ -5,7 +5,13 @@
 Install the dependencies:
 
 ```shell
-yarn install
+yarn
+```
+
+Create an `.env` file with the following contents:
+
+```properties
+VITE_API_URL=http://localhost:3000
 ```
 
 Make your change, test it.

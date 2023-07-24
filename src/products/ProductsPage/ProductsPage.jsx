@@ -4,7 +4,7 @@ import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
 import ProductCondition from "@/products/ProductCondition/index.js";
 import { withRow } from "@/hoc/index.js";
-import { useQuery } from "@tanstack/react-query";
+import useProducts from "@/hooks/useProducts/index.js";
 
 const columns = [
   {
@@ -32,10 +32,7 @@ const columns = [
 ];
 
 export default function ProductsPage() {
-  const { isLoading, data: products } = useQuery(["products"], async () => {
-    const response = await fetch("http://localhost:3001/products");
-    return await response.json();
-  });
+  const { isLoading, data: products } = useProducts();
 
   if (isLoading) return <div>Loading...</div>;
 
