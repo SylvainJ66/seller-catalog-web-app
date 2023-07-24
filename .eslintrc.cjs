@@ -23,6 +23,9 @@ module.exports = {
       alias: {
         map: [["@", "./src"]],
       },
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
     },
   },
   overrides: [
