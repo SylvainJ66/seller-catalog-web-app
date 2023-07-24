@@ -49,7 +49,7 @@ export default function MainTemplate() {
                   component={Link}
                   to={url}
                   variant="navigation"
-                  color={pathname === url ? "active" : undefined}
+                  color={pathname.startsWith(url) ? "active" : undefined}
                 >
                   {name}
                 </Button>

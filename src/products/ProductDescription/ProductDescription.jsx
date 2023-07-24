@@ -1,17 +1,16 @@
 import PropTypes from "prop-types";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { LargeField } from "@/ds/atom";
 
 export default function ProductDescription({ name, id, description }) {
   return (
-    <>
-      <Box sx={{ textOverflow: "elipsis", overflow: "hidden" }}>
-        <Typography component={Link} to={`/products/${id}`}>
-          {name}
-        </Typography>
-        <Typography noWrap>{description}</Typography>
-      </Box>
-    </>
+    <LargeField>
+      <Typography component={Link} to={`/products/${id}`}>
+        {name}
+      </Typography>
+      <Typography noWrap>{description}</Typography>
+    </LargeField>
   );
 }
 
