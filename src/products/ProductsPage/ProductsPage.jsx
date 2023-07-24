@@ -5,6 +5,7 @@ import ProductPrice from "@/products/ProductPrice";
 import ProductCondition from "@/products/ProductCondition/index.js";
 import { withRow } from "@/hoc/index.js";
 import useProducts from "@/hooks/useProducts/index.js";
+import ProductDescription from "@/products/ProductDescription/index.js";
 
 const columns = [
   {
@@ -14,8 +15,9 @@ const columns = [
   },
   {
     field: "productDescription",
+    flex: 1,
     headerName: "Produit",
-    valueGetter: ({ row }) => `${row.name} ${row.description}`,
+    renderCell: withRow(ProductDescription),
   },
   {
     field: "condition",
