@@ -4,7 +4,7 @@ import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
 import ProductCondition from "@/products/ProductCondition/index.js";
 import { withRow } from "@/hoc/index.js";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const columns = [
   {
@@ -32,20 +32,12 @@ const columns = [
 ];
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState([]);
+  const { isLoading, data: products } = useQuery(["products"], async () => {
+    const response = await fetch("http://localhost:3001/products");
+    return await response.json();
+  });
 
-  useEffect(() => {
-    async function fetchProduct() {
-      try {
-        const response = await fetch("http://localhost:3001/products");
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchProduct();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
