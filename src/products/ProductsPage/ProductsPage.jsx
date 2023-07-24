@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import db from "../../db.json";
 import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
 import ProductCondition from "@/products/ProductCondition/index.js";
 import { withRow } from "@/hoc/index.js";
+import { useEffect, useState } from "react";
 
 const columns = [
   {
@@ -31,13 +31,26 @@ const columns = [
   { field: "stock", headerName: "Stock", typeNumber: true },
 ];
 
-const rows = db.products;
-
 export default function ProductsPage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const response = await fetch("http://localhost:3001/products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchProduct();
+  }, []);
+
   return (
-    <Box sx={{ height: "800%", width: "100%" }}>
+    <Box sx={{ height: "100%", width: "100%" }}>
       <DataGrid
-        rows={rows}
+        rows={products}
         columns={columns}
         initialState={{
           pagination: {
