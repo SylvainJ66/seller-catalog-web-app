@@ -1,17 +1,14 @@
 import { number } from "prop-types";
-import ProductCondition from "@/products/ProductCondition/index.js";
 import { withRow } from "@/hoc/index.js";
+import { Price } from "@/ds/atom/index.js";
 
 function ProductPrice({ price }) {
-  return new Intl.NumberFormat(window.navigator.language, {
-    style: "currency",
-    currency: "EUR",
-  }).format(price);
+  return <Price value={price} />;
 }
 
-ProductCondition.propTypes = {
+ProductPrice.propTypes = {
   price: number,
 };
 
-const RowProductPrice = withRow(ProductPrice);
+const RowProductPrice = withRow(Price);
 export default RowProductPrice;
