@@ -11,7 +11,7 @@ yarn
 Create an `.env` file with the following contents:
 
 ```properties
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=http://localhost:3001
 ```
 
 Make your change, test it.
