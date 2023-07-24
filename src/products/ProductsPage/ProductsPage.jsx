@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, LinearProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
@@ -34,7 +34,13 @@ const columns = [
 export default function ProductsPage() {
   const { isLoading, data: products } = useProducts();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <>
+        <LinearProgress />
+        <div>Loading...</div>
+      </>
+    );
 
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
