@@ -14,6 +14,8 @@ import useProducts from "@/hooks/useProducts/index.js";
 import ProductDescription from "@/products/ProductDescription/index.js";
 import Page from "@/ds/pages/Page/index.js";
 import { Search } from "@mui/icons-material";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const columns = [
   {
@@ -42,7 +44,12 @@ const columns = [
 ];
 
 export default function ProductsRoute() {
-  const { isLoading, data: products } = useProducts();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
+  const { isLoading, data: products, refetch } = useProducts({ search });
+  const handleChange = (event) => {
+    setSearch(event.currentTarget.value);
+  };
 
   if (isLoading)
     return (
@@ -67,8 +74,19 @@ export default function ProductsRoute() {
               ),
             }}
             sx={{ width: "630px" }}
+            value={search}
+            onChange={handleChange}
+            autoComplete="off"
           />
-          <Button sx={{ ml: 1 }}>Rechercher</Button>
+          <Button
+            onClick={() => {
+              setSearchParams({ q: search });
+              refetch();
+            }}
+            sx={{ ml: 1 }}
+          >
+            Rechercher
+          </Button>
         </Box>
         <Box sx={{ height: "100%", width: "100%" }}>
           <DataGrid
