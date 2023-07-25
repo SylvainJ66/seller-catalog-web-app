@@ -33,7 +33,7 @@ const columns = [
   { field: "stock", headerName: "Stock", typeNumber: true },
 ];
 
-export default function ProductsPage() {
+export default function ProductsRoute() {
   const { isLoading, data: products } = useProducts();
 
   if (isLoading)
