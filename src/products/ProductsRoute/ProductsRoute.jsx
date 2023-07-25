@@ -6,6 +6,7 @@ import ProductCondition from "@/products/ProductCondition/index.js";
 import { withRow } from "@/hoc/index.js";
 import useProducts from "@/hooks/useProducts/index.js";
 import ProductDescription from "@/products/ProductDescription/index.js";
+import Page from "@/ds/pages/Page/index.js";
 
 const columns = [
   {
@@ -45,20 +46,23 @@ export default function ProductsRoute() {
     );
 
   return (
-    <Box sx={{ height: "100%", width: "100%" }}>
-      <DataGrid
-        rows={products}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 15,
+    <>
+      <Page title="Gestion du catalogue"></Page>
+      <Box sx={{ height: "100%", width: "100%" }}>
+        <DataGrid
+          rows={products}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 15,
+              },
             },
-          },
-        }}
-        pageSizeOptions={[15]}
-        disableRowSelectionOnClick
-      />
-    </Box>
+          }}
+          pageSizeOptions={[15]}
+          disableRowSelectionOnClick
+        />
+      </Box>
+    </>
   );
 }
