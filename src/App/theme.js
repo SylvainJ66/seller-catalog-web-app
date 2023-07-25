@@ -16,7 +16,17 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiTextField: {
+      defaultProps: {
+        variant: "outlined",
+        size: "small",
+      },
+    },
     MuiButton: {
+      defaultProps: {
+        variant: "contained",
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           textTransform: "none",

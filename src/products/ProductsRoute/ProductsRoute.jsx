@@ -1,4 +1,10 @@
-import { Box, LinearProgress } from "@mui/material";
+import {
+  Box,
+  Button,
+  InputAdornment,
+  LinearProgress,
+  TextField,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
@@ -7,6 +13,7 @@ import { withRow } from "@/hoc/index.js";
 import useProducts from "@/hooks/useProducts/index.js";
 import ProductDescription from "@/products/ProductDescription/index.js";
 import Page from "@/ds/pages/Page/index.js";
+import { Search } from "@mui/icons-material";
 
 const columns = [
   {
@@ -47,22 +54,38 @@ export default function ProductsRoute() {
 
   return (
     <>
-      <Page title="Gestion du catalogue"></Page>
-      <Box sx={{ height: "100%", width: "100%" }}>
-        <DataGrid
-          rows={products}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 15,
+      <Page title="Gestion du catalogue">
+        <Box sx={{ ml: 21, pb: 8 }}>
+          <TextField
+            placeholder="Recherche par GTIN ou SKU"
+            id="input-with-icon-textfield"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ width: "630px" }}
+          />
+          <Button sx={{ ml: 1 }}>Rechercher</Button>
+        </Box>
+        <Box sx={{ height: "100%", width: "100%" }}>
+          <DataGrid
+            rows={products}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 15,
+                },
               },
-            },
-          }}
-          pageSizeOptions={[15]}
-          disableRowSelectionOnClick
-        />
-      </Box>
+            }}
+            pageSizeOptions={[15]}
+            disableRowSelectionOnClick
+          />
+        </Box>
+      </Page>
     </>
   );
 }
