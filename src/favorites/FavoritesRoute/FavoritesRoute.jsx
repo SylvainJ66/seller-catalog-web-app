@@ -1,10 +1,10 @@
 import { Page } from "@/ds/pages";
 import { DataGrid } from "@mui/x-data-grid";
 import { productColumns } from "@/products/productColumns.js";
-import { useReducer } from "react";
+import { FavoritesContext } from "@/contexts";
 
 export default function FavoritesRoute() {
-  const [products] = useReducer(() => {}, []);
+  const products = FavoritesContext.useContext();
 
   return (
     <Page title="Favoris">
