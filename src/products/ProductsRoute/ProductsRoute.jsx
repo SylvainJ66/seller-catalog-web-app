@@ -15,6 +15,7 @@ import ProductDescription from "@/products/ProductDescription";
 import Page from "@/ds/pages/Page";
 import { Search } from "@mui/icons-material";
 import { useSearch } from "@/hooks";
+import ProductActions from "@/products/ProductActions/index.js";
 
 const columns = [
   {
@@ -40,6 +41,12 @@ const columns = [
     renderCell: withRow(ProductPrice),
   },
   { field: "stock", headerName: "Stock", typeNumber: true },
+  {
+    field: "actions",
+    headerName: "-",
+    sortable: false,
+    renderCell: withRow(ProductActions),
+  },
 ];
 
 export default function ProductsRoute() {
