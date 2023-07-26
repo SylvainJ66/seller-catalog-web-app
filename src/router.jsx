@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainTemplate from "@/ds/templates/MainTemplate";
-import ProductsRoute from "@/products/ProductsRoute/index.js";
-import ProductRoute from "@/products/ProductRoute/index.js";
-import OrdersRoute from "@/orders/OrdersRoute/index.js";
-import { Page } from "@/ds/pages/index.js";
+import ProductsRoute from "@/products/ProductsRoute";
+import ProductRoute from "@/products/ProductRoute";
+import OrdersRoute from "@/orders/OrdersRoute/";
+import { Page } from "@/ds/pages";
+import FavoritesRoute from "@/favorites/FavoritesRoute";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "products/:id",
         element: <ProductRoute />,
+      },
+      {
+        path: "favorites",
+        element: <FavoritesRoute />,
       },
       {
         path: "orders",

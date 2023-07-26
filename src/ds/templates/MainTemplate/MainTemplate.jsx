@@ -17,6 +17,7 @@ const mainMenu = [
   { name: "Finance", url: "/financial", domain: "financial" },
   { name: "Messages", url: "/messages", domain: "messages" },
   { name: "Marketplaces", url: "/marketPlaces", domain: "marketPlaces" },
+  { name: "Favoris", url: "/favorites", domain: "favorites" },
 ];
 
 const isCurrentTab = ({ url, pathname, domain }) =>
