@@ -8,13 +8,13 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import ProductImage from "@/products/ProductImage";
 import ProductPrice from "@/products/ProductPrice";
-import ProductCondition from "@/products/ProductCondition/index.js";
-import { withRow } from "@/hoc/index.js";
-import useProducts from "@/hooks/useProducts/index.js";
-import ProductDescription from "@/products/ProductDescription/index.js";
-import Page from "@/ds/pages/Page/index.js";
+import ProductCondition from "@/products/ProductCondition";
+import { withRow } from "@/hoc";
+import useProducts from "@/hooks/useProducts";
+import ProductDescription from "@/products/ProductDescription";
+import Page from "@/ds/pages/Page";
 import { Search } from "@mui/icons-material";
-import { useSearch } from "@/hooks/index.js";
+import { useSearch } from "@/hooks";
 
 const columns = [
   {
