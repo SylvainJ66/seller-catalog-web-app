@@ -62,7 +62,15 @@ export default function ProductsRoute() {
   return (
     <>
       <Page title="Gestion du catalogue">
-        <Box sx={{ ml: 21, pb: 8 }}>
+        <Box
+          sx={{ ml: 21, pb: 8 }}
+          component="form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            setSearchParams({ q: search });
+            refetch();
+          }}
+        >
           <TextField
             placeholder="Recherche par GTIN ou SKU"
             id="input-with-icon-textfield"
