@@ -16,6 +16,10 @@ VITE_API_URL=http://localhost:3001
 
 Make your change, test it.
 
+```shell
+yarn test
+```
+
 Commit using:
 
 ```shell
