@@ -13,13 +13,16 @@ import {
   TableRow,
 } from "@mui/material";
 import useProduct from "@/hooks/useProduct";
-import { Edit, Favorite } from "@mui/icons-material";
+import { Edit, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Price } from "@/ds/atom";
-import ProductCondition from "@/products/ProductCondition/index.js";
+import ProductCondition from "@/products/ProductCondition";
+import { FavoritesContext } from "@/contexts";
 
 export default function ProductRoute() {
   const { id } = useParams();
   const { isLoading, data: product } = useProduct({ id });
+  const { toggleFavorites, favoriteIds } = FavoritesContext.useContext();
+  const isFavorite = favoriteIds.includes(id);
 
   if (isLoading) return <LinearProgress />;
 
@@ -49,8 +52,12 @@ export default function ProductRoute() {
         <Box
           sx={{ display: "flex", justifyContent: "flex-end", gap: 1, my: 2 }}
         >
-          <Button variant="outlined" startIcon={<Favorite />}>
-            Ajouter au favoris
+          <Button
+            variant="outlined"
+            startIcon={isFavorite ? <Favorite /> : <FavoriteBorder />}
+            onClick={() => toggleFavorites({ id })}
+          >
+            {isFavorite ? "Retirer des favoris" : "Ajouter au favoris"}
           </Button>
           <Button startIcon={<Edit />}>Editer</Button>
         </Box>

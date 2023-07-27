@@ -7,9 +7,9 @@ export default function useProductsByIds({ ids }) {
 
   return useQuery({
     queryKey: ["products", ...ids],
-    queryFn: async () => {
-      return await httpClient.get(`products?${searchParams.toString()}`).json();
-    },
-    refetchOnWindowFocus: false,
+    queryFn: async () =>
+      ids.length > 0
+        ? await httpClient.get(`products`, { searchParams }).json()
+        : [],
   });
 }
