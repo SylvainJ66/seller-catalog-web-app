@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ProductImage /> > renders correctly 1`] = `
+<div>
+  <img
+    alt="Alt Text"
+    src="//test/image.jpg"
+  />
+</div>
+`;
