@@ -17,4 +17,9 @@ describe("Price", () => {
     render(<Price value={100} currency="EUR" />);
     expect(screen.getByText("100,00 €")).toBeInTheDocument();
   });
+  test("NOT SUPPORTED", () => {
+    vi.stubGlobal("navigator", { language: "fr-FR" });
+    render(<Price value={100} currency="UNSUPPORTED" />);
+    expect(screen.getByText("100,00 €")).toBeInTheDocument();
+  });
 });
