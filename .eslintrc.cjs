@@ -1,7 +1,11 @@
 /* eslint-env node */
 
 module.exports = {
-  env: { browser: true, es2020: true, jest: true },
+  env: {
+    browser: true,
+    es2020: true,
+    jest: true,
+  },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -14,8 +18,12 @@ module.exports = {
     "plugin:xss/recommended",
     "plugin:vitest/recommended",
     "prettier",
+    "plugin:storybook/recommended",
   ],
-  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
   settings: {
     react: {
       version: "18.2",
@@ -39,7 +47,9 @@ module.exports = {
   rules: {
     "react-refresh/only-export-components": [
       "warn",
-      { allowConstantExport: true },
+      {
+        allowConstantExport: true,
+      },
     ],
   },
 };
