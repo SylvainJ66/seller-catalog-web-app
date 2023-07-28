@@ -23,6 +23,10 @@ const mainMenu = [
 const isCurrentTab = ({ url, pathname, domain }) =>
   url === pathname || pathname.startsWith(`/${domain}`);
 
+/**
+ * This is the main template of the application.
+ * We have to use it with an [`<Outlet />`(https://reactrouter.com/en/main/components/outlet)] from react router.
+ */
 export default function MainTemplate() {
   const { pathname } = useLocation();
 
